@@ -1,0 +1,7 @@
+﻿Docs-ProjectStructure
+
+https://nextjs.org/docs/app/getting-started/project-structure#colocation
+
+Docs-FileConventions
+
+https://nextjs.org/docs/app/api-reference/file-conventions

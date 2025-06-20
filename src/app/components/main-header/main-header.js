@@ -10,7 +10,7 @@ export default function MainHeader() {
     return (
         <>
             <MainHeaderBackground/>
-            <heaeder className={classes.header}>
+            <header className={classes.header}>
                 <Link className={classes.logo} href="/public">
                     <Image src={logoImg} alt="a plate with food on it image" priority/>
                     Next Level Food
@@ -30,7 +30,7 @@ export default function MainHeader() {
                         </li>
                     </ul>
                 </nav>
-            </heaeder>
+            </header>
         </>
 
     )

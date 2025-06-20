@@ -21,3 +21,7 @@ https://nextjs.org/docs/13/app/api-reference/components/image
 react server components vs client components
 
 https://nextjs.org/learn/react-foundations/server-and-client-components
+
+SQLite Browser
+
+https://sqlitebrowser.org/dl/

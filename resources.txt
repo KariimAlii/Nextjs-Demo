@@ -17,3 +17,7 @@ https://nextjs.org/docs/13/app/building-your-application/styling/css-modules
 Optimizing Images in Nextjs
 
 https://nextjs.org/docs/13/app/api-reference/components/image
+
+react server components vs client components
+
+https://nextjs.org/learn/react-foundations/server-and-client-components

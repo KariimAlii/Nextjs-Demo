@@ -5,3 +5,11 @@ https://nextjs.org/docs/app/getting-started/project-structure#colocation
 Docs-FileConventions
 
 https://nextjs.org/docs/app/api-reference/file-conventions
+
+Install Tailwind with Nextjs
+
+https://tailwindcss.com/docs/installation/framework-guides/nextjs
+
+CSS Modules
+
+https://nextjs.org/docs/13/app/building-your-application/styling/css-modules

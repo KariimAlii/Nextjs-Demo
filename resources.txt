@@ -25,3 +25,12 @@ https://nextjs.org/learn/react-foundations/server-and-client-components
 SQLite Browser
 
 https://sqlitebrowser.org/dl/
+
+Server Actions
+
+https://nextjs.org/docs/13/app/building-your-application/data-fetching/server-actions-and-mutations
+https://nextjs.org/docs/app/getting-started/updating-data
+https://react.dev/reference/rsc/server-functions
+https://react.dev/reference/rsc/server-functions#using-server-functions-with-form-actions
+https://siamahnaf.medium.com/how-to-use-next-js-server-actions-to-handle-form-submissions-a9a9e12508c9
+https://developer.mozilla.org/en-US/docs/Web/API/FormData

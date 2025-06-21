@@ -1,6 +1,7 @@
 ﻿import NewsGrid from "@/app/components/news/news-grid/news-grid";
 
 export default async function News() {
+    await new Promise(resolve => setTimeout(resolve, 7000))
     const response = await fetch('http://localhost:8080/news');
     if(!response.ok) {
         throw new Error('Failed to fetch News!')

@@ -1,6 +1,11 @@
 export default function NewPostPage() {
   function createPost(formData) {
-    formData.get()
+    // Client Side React Form Action
+    const title = formData.get('title')
+    const image = formData.get('image')
+    const content = formData.get('content')
+
+    console.log(title, image, content)
   }
   return (
     <>

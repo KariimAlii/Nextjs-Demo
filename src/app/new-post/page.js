@@ -1,8 +1,12 @@
+"use client";
+
 import {storePost} from "@/lib/posts";
 import {redirect} from "next/navigation";
 import FormSubmit from "@/app/components/form-submit";
+import {useActionState} from "react";
 
 export default function NewPostPage() {
+
   async function createPost(formData) {
     // Server Action ==> You need to use (Use Server) directive , Must be async
     "use server";
@@ -11,6 +15,24 @@ export default function NewPostPage() {
     const content = formData.get('content')
 
     console.log(title, image, content)
+
+    let errors = [];
+
+    if(!title || title.trim().length === 0) {
+      errors.push('Title is required.')
+    }
+
+    if(!content || content.trim().length === 0) {
+      errors.push('Content is required.')
+    }
+
+    if(!image) {
+      errors.push('Image is required.')
+    }
+
+    if(errors.length > 0) {
+      return {errors}
+    }
 
     storePost({
       title,
@@ -21,10 +43,13 @@ export default function NewPostPage() {
 
     redirect('/feed')
   }
+
+  const [state, formAction] = useActionState(createPost, {});
+
   return (
     <>
       <h1>Create a new post</h1>
-      <form action={createPost}>
+      <form action={formAction}>
         <p className="form-control">
           <label htmlFor="title">Title</label>
           <input type="text" id="title" name="title" />

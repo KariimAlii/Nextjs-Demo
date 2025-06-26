@@ -1,4 +1,4 @@
-import Posts from '@/components/posts';
+import Posts from '@/app/components/posts';
 import { getPosts } from '@/lib/posts';
 
 export default async function FeedPage() {

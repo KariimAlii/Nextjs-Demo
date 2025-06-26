@@ -1,3 +1,7 @@
+import {storePost} from "@/lib/posts";
+import {redirect} from "next/navigation";
+import FormSubmit from "@/app/components/form-submit";
+
 export default function NewPostPage() {
   async function createPost(formData) {
     // Server Action ==> You need to use (Use Server) directive , Must be async
@@ -7,6 +11,15 @@ export default function NewPostPage() {
     const content = formData.get('content')
 
     console.log(title, image, content)
+
+    storePost({
+      title,
+      content,
+      imageUrl: '',
+      userId: 1
+    })
+
+    redirect('/feed')
   }
   return (
     <>
@@ -30,8 +43,7 @@ export default function NewPostPage() {
           <textarea id="content" name="content" rows="5" />
         </p>
         <p className="form-actions">
-          <button type="reset">Reset</button>
-          <button>Create Post</button>
+          <FormSubmit/>
         </p>
       </form>
     </>

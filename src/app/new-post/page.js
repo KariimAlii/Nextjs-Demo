@@ -1,6 +1,7 @@
 export default function NewPostPage() {
-  function createPost(formData) {
-    // Client Side React Form Action
+  async function createPost(formData) {
+    // Server Action ==> You need to use (Use Server) directive , Must be async
+    "use server";
     const title = formData.get('title')
     const image = formData.get('image')
     const content = formData.get('content')

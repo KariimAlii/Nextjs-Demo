@@ -1,8 +1,13 @@
-﻿import Link from 'next/link';
+﻿"use client";
+
+import Link from 'next/link';
+import {useActionState} from "react";
+import {signup} from "@/actions/auth-actions";
 
 export default function AuthForm() {
+    const [formState, formAction] = useActionState(signup, {})
     return (
-        <form id="auth-form">
+        <form id="auth-form" action={formAction}>
             <div>
                 <img src="/images/auth-icon.jpg" alt="A lock icon" />
             </div>
@@ -18,10 +23,23 @@ export default function AuthForm() {
                 <button type="submit">
                     Create Account
                 </button>
+
+                {formState.errors &&
+                    <ul id="form-errors">
+                        {
+                            Object.keys(formState.errors)
+                                .map(errorKey =>
+                                    <li key={errorKey}>{formState.errors[errorKey]}</li>
+                                )
+                        }
+                    </ul>
+                }
             </p>
             <p>
                 <Link href="/">Login with existing account.</Link>
             </p>
+
+
         </form>
     );
 }

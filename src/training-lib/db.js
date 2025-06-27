@@ -43,4 +43,5 @@ if (!hasTrainings) {
 `);
 }
 
+export default db;
 

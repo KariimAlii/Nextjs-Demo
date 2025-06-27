@@ -40,3 +40,7 @@ https://react.dev/reference/react-dom/hooks/useFormStatus
 
 use Action State React Hook
 https://react.dev/reference/react/useActionState
+
+Authentication using Lucia https://v3.lucia-auth.com/
+npm install lucia
+npm install @lucia-auth/adapter-sqlite

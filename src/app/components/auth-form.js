@@ -2,12 +2,10 @@
 
 import Link from 'next/link';
 import {useActionState} from "react";
-import {signup} from "@/actions/auth-actions";
+import {auth, signup} from "@/actions/auth-actions";
 
-export default function AuthForm({ searchParams }) {
-    const formMode = searchParams.mode || 'login';
-
-    const [formState, formAction] = useActionState(signup, {})
+export default function AuthForm({ mode }) {
+    const [formState, formAction] = useActionState(auth.bind(null, mode), {})
     return (
         <form id="auth-form" action={formAction}>
             <div>
@@ -23,7 +21,7 @@ export default function AuthForm({ searchParams }) {
             </p>
             <p>
                 <button type="submit">
-                    {formMode === 'login' ? 'Login' : 'Create Account'}
+                    {mode === 'login' ? 'Login' : 'Create Account'}
                 </button>
 
                 {formState.errors &&
@@ -38,8 +36,8 @@ export default function AuthForm({ searchParams }) {
                 }
             </p>
             <p>
-                {formMode === 'login' && <Link href="/auth?mode=signup">Signup with us!</Link>}
-                {formMode === 'signup' && <Link href="/auth?mode=login">Login with existing account.</Link>}
+                {mode === 'login' && <Link href="/?mode=signup">Signup with us!</Link>}
+                {mode === 'signup' && <Link href="/?mode=login">Login with existing account.</Link>}
             </p>
 
 

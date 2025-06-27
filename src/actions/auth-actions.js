@@ -1,7 +1,7 @@
 ﻿"use server";
 
-import {createUser} from "@/training-lib/users";
-import {hashUserPassword} from "@/training-lib/hash";
+import {createUser, getUserByEmail} from "@/training-lib/users";
+import {hashUserPassword, verifyPassword} from "@/training-lib/hash";
 import {redirect} from "next/navigation";
 import {createAuthSession} from "@/training-lib/auth";
 
@@ -40,4 +40,28 @@ export async function signup(prevState, formData) {
         }
         throw err;
     }
+}
+
+export async function login(prevState, formData) {
+    const email = formData.get('email');
+    const password = formData.get('password');
+    const existingUser = getUserByEmail(email);
+    if(!existingUser) {
+        return {
+            erros: {
+                email: 'Could not authenticate user, Check credentials'
+            }
+        }
+    }
+    const isValidPassword = verifyPassword(existingUser.password, password);
+    if(!isValidPassword) {
+        return {
+            erros: {
+                password: 'Could not authenticate user, Check credentials'
+            }
+        }
+    }
+
+    await createAuthSession(existingUser.id);
+    redirect('/training');
 }

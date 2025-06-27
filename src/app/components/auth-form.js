@@ -36,8 +36,8 @@ export default function AuthForm({ mode }) {
                 }
             </p>
             <p>
-                {mode === 'login' && <Link href="/?mode=signup">Signup with us!</Link>}
-                {mode === 'signup' && <Link href="/?mode=login">Login with existing account.</Link>}
+                {mode === 'login' && <Link href="/home?mode=signup">Signup with us!</Link>}
+                {mode === 'signup' && <Link href="/home?mode=login">Login with existing account.</Link>}
             </p>
 
 

@@ -4,7 +4,9 @@ import Link from 'next/link';
 import {useActionState} from "react";
 import {signup} from "@/actions/auth-actions";
 
-export default function AuthForm() {
+export default function AuthForm({ searchParams }) {
+    const formMode = searchParams.mode || 'login';
+
     const [formState, formAction] = useActionState(signup, {})
     return (
         <form id="auth-form" action={formAction}>
@@ -21,7 +23,7 @@ export default function AuthForm() {
             </p>
             <p>
                 <button type="submit">
-                    Create Account
+                    {formMode === 'login' ? 'Login' : 'Create Account'}
                 </button>
 
                 {formState.errors &&
@@ -36,7 +38,8 @@ export default function AuthForm() {
                 }
             </p>
             <p>
-                <Link href="/">Login with existing account.</Link>
+                {formMode === 'login' && <Link href="/auth?mode=signup">Signup with us!</Link>}
+                {formMode === 'signup' && <Link href="/auth?mode=login">Login with existing account.</Link>}
             </p>
 
 

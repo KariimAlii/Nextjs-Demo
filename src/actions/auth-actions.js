@@ -2,6 +2,7 @@
 
 import {createUser} from "@/training-lib/users";
 import {hashUserPassword} from "@/training-lib/hash";
+import {redirect} from "next/navigation";
 
 export async function signup(prevState, formData) {
     const email = formData.get('email');
@@ -22,5 +23,20 @@ export async function signup(prevState, formData) {
     // store in DB
 
     const hashedPassword = hashUserPassword(password);
-    createUser(email, hashedPassword);
+
+
+    try {
+        createUser(email, hashedPassword);
+    } catch(err) {
+        if(err.code === 'SQLITE_CONSTRAINT_UNIQUE') {
+            return {
+                errors: {
+                    email: 'User already exists'
+                }
+            }
+        }
+        throw err;
+    }
+
+    redirect('/training')
 }
